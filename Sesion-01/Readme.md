@@ -41,19 +41,11 @@ Haremos uso de Transitions para crear animaciones suaves en el flujo de navegaci
 
 ---
 
-### 3. Proyecto :hammer:
+### 3. Proyecto (Postwork) :hammer:
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
 - [**`PROYECTO SESIÓN 1`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 1`**](Postwork/Readme.md)
-
-<br/>
 
 [`Anterior`](../Readme.md) | [`Siguiente`](../Sesion-02/Readme.md)      
 
