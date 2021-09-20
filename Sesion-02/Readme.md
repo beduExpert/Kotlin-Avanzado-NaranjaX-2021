@@ -52,17 +52,11 @@ Ahora utilizaremos el cliente Retrofit diseñado para aplicaciones android, resa
 
 ---
 
-### 3. Proyecto :hammer:
+### 3. Proyecto (Postwork) :hammer:
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
 - [**`PROYECTO SESIÓN 2`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 2`**](Postwork/Readme.md)
 
 <br/>
 
