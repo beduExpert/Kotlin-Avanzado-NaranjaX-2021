@@ -38,17 +38,11 @@ Visualizaremos un Preview en pantalla que muestre lo que la cámara registre, ca
 
  
 
-### 3. Proyecto :hammer:
+### 3. Proyecto (Postwork) :hammer:
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
 - [**`PROYECTO SESIÓN 3`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 3`**](Postwork/Readme.md)
 
 <br/>
 
