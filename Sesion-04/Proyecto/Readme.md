@@ -4,12 +4,10 @@
 
 <div style="text-align: justify;">
 
-  
-
 ### 1. Objetivos :dart:
 
-* Guardar información no sensible mediante Shared Preferences
-* Utilizar Room para almacenar un set de datos locales y recuperarlos para su uso en la app.
+* Utilizar Room para almacenar un set de datos locales
+*  Manipular la información guardada para su uso en la app.
 
 ### 2. Requisitos :clipboard:
 
@@ -17,18 +15,78 @@
 
 ### 3. Desarrollo :computer:
 
-En esta parte del proyecto, haremos uso de las dos principales herramientas que abordamos en la sesión. Mediante SharedPreferences, podemos guardar valores no sensibles que podrían ser algunos _flags_ indicando si ya realizamos alguna acción o aún no (un Boolean), datos de perfil no sensibles (Podríamos almacenar nickname, algunos datos de configuración de la app etc.) e incluso tokens como un jwt (esto claro, simulado).
-
-Para la base de datos, podríamos guardar una tabla que represente algún set de elementos que tengan una importancia protagónica en nuestra app (como lista de productos, historial de transacciones, colección de tarjetas).
+En esta parte del proyecto, haremos uso de la librería Room, que nos va a servir para guardar una tabla que representa algún set de elementos que tengan una importancia protagónica en nuestra app, que en este caso, será la lista del carrito de compras.
 
 
 
-Lineamientos
+#### Carrito de compras
 
-1. Hacer uso de la librería SharedPreferences en al menos dos situaciones diferentes en la aplicación.
-2. Utilizar Room al menos una vez en nuestra aplicación 
-3. El uso de la librería Room debe implicar un CRUD.
-4. El set de elementos debe estar relacionado a los elementos de las listas creadas en el curso Kotlin Intermedio.
+La implementación del carrito de compras consta de una lista de elementos en nuestro carrito, y un botón que nos lleve a proceder con el pago de nuestra lista.
+
+<img src="images/cart_list.png" width="40%">
+
+
+
+La lista de productos en el carrito desplegará únicamente la imagen de nuestro producto, así como el título de este, su precio, un indicador numérico de la cantidad de productos a adquirir y dos botones para aumentar y disminuir la cantidad de productos de ese tipo. El layout a diseñar tendrá la siguiente configuración:
+
+<img src="images/cart_element.png" width="60%">
+
+
+
+El comportamiento de la pantalla es el sigiuiente:
+
+* Cada vez que agreguemos un producto desde el detalle de un producto, este se debe de agregar a una tabla, donde almacenaremos los productos totales. Este proceso se puede repetir para un mismo producto. 
+
+* Si agregamos dos veces un elemento desde la pantalla de detalles de producto, en vez de duplicarse el producto en la lista del carrito, se debe mostrar un solo item con el indicador de cantidad en 2.
+
+* Tendremos la opción de aumentar y disminuir la cantidad de elementos en nuestro carrito. Cada vez que pulsemos agregar un elemento, se debe guardar un nuevo elemento de ese producto en la tabla de  nuestro carrito y el indicador numérico debe aumentar una unidad.
+
+* Al disminuir nuestra cantidad de productos, se quitará un elemento de ese producto en la tabla de nuestro carrito y el indicador numérico deberá disminuir una unidad. En caso de que tengamos un solo producto y disminuyamos a cero, debemos eliminar el remanente y eliminar el item de nuestra lista.
+* Al pulsar el botón de pagar elementos, navegaremos a la pantalla de resúmen de la compra.
+
+El resultado final es el siguiente:
+
+<img src="images/add_remove.gif" width="35%">
+
+
+
+#### Resumen del pago
+
+En esta pantalla, Mostraremos los detalles del pago que son la dirección de envío y el método de pago. Tranquilo! los datos que van ahí son datos dummy, así que escribe los textos que aparecen en la visualización de la pantalla :smile:.
+
+En la sección de Resumen de la pantalla, mostraremos el subtotal, que es la sumatoria de los precios de todos los productos en el carrito. Este dato lo vamos a obtener mediante una simple query en nuestra tabla.
+
+El costo de envío será de $30.00 fijos y se sumará con el subtotal para obtener el precio total, que se muestra también en pantalla.
+
+ Finalmente, al pulsar sobre el botón *pagar*, todos los elementos de nuestro carrito de compras serán eliminados y navegaremos a la pantalla de pago exitoso.
+
+El resultado final es el siguiente:
+
+
+
+<img src="images/cart_resume.png" width="40%">
+
+
+
+#### Pago exitoso
+
+Al realizar el pago, navegaremos a una nueva pantalla. Este Fragment no tendrá otra funcionalidad que desplegar un mensaje de transacción exitosa, y tendrá un botón que nos redirigirá a la lista de productos.
+
+<img src="images/paid.png" width="40%">
+
+
+
+#### Resultado final
+
+Como resultado de la unión de la descripción anterior, tenemos el siguiente flujo:
+
+<img src="images/navigation.gif" width="40%">
+
+
+
+#### Recursos
+
+* [Imagen](resources/img_package.png) de paquete para la pantalla de pago exitoso.
 
 [`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
 
