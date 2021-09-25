@@ -37,7 +37,7 @@ La notificación se debe reproducir cada vez que se efectúe una compra. Al dar 
 
 
 
-Para navegar a un Fragment en vez de de a un activity por medio de una notificación, podemos utilizar un ***Deep Link*** a través de nuestro navigation component y lanzarlo por medio de un ___pending intent___.
+Para navegar a un Fragment en vez de a un activity por medio de una notificación, podemos utilizar un ***Deep Link*** a través de nuestro navigation component y lanzarlo por medio de un ___pending intent___.
 
 ```kotlin
 val pendingIntent = NavDeepLinkBuilder(requireContext())
