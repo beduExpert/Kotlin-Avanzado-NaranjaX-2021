@@ -40,23 +40,7 @@ Un content provider proporciona una implementación de una interfaz que actúa c
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
 - [**`RETO 2`**](Reto-02/Readme.md)
 
----
 
- 
-
-### 3. Proyecto :hammer:
-
-Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
-
-- [**`PROYECTO SESIÓN 5`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 5`**](Postwork/Readme.md)
-
-<br/>
 
 [`Anterior`](../Sesion-04/Readme.md) | [`Siguiente`](../Sesion-06/Readme.md)      
 

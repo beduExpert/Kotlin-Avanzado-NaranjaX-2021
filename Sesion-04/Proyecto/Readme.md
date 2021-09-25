@@ -88,7 +88,7 @@ Como resultado de la unión de la descripción anterior, tenemos el siguiente fl
 
 * [Imagen](resources/img_package.png) de paquete para la pantalla de pago exitoso.
 
-[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
+[`Anterior`](../Reto-02) | [`Siguiente`](../Readme.md)      
 
 </div>
 
