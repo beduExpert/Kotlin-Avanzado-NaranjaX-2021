@@ -57,7 +57,7 @@ El resultado final deberá ser el siguiente:
 
 
 
-[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
+[`Anterior`](../Reto-02) | [`Siguiente`](../Readme.md)      
 
 </div>
 
