@@ -129,6 +129,18 @@ Agregaremos elementos a las notificaciones que las personalizar y ajustan al con
 
 * [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
 
+### 3. Proyecto :hammer:
+
+Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
+
+- [**`PROYECTO SESIÓN 6`**](Proyecto/Readme.md)
+
+  
+
+  
+
+### 4. Temas adicionales 📖
+
 #### <ins>Crashlytics</ins>
 
 Crearemos reportes de errores en nuestra aplicación y los visualizaremos dentro de la consola de Firebase.
@@ -137,19 +149,7 @@ Crearemos reportes de errores en nuestra aplicación y los visualizaremos dentro
 
 * [**`RETO 3`**](Reto-03)
 
-### 3. Proyecto :hammer:
 
-Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
-
-- [**`PROYECTO SESIÓN 6`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 6`**](Postwork/Readme.md)
-
-<br/>
 
 [`Anterior`](../Sesion-03/Readme.md) | [`Siguiente`](../Sesion-05/Readme.md)      
 

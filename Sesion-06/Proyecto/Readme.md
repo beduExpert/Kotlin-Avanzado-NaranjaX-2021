@@ -3,34 +3,59 @@
 ## Proyecto
 
 <div style="text-align: justify;">
-
-
-
-
 ### 1. Objetivos :dart:
 
-* Implementar notificaciones locales y remotas a nuestra aplicación
-* Registrar nuestra app a Firebase
+* Implementar notificaciones locales
 
 ### 2. Requisitos :clipboard:
 
-* Cuenta de google creada
-* Suscripción a los servicios de Firebase
+* Android Studio
 
 ### 3. Desarrollo :computer:
 
 Las notificaciones son un medio muy importante para la comunicación entre el usuario y la aplicación, pues este alerta al usuario de distintas novedades y mantiene el flujo de uso.
 
-Vamos a implementar un sistema pequeño de notificaciones a nuestra app.
+Vamos a implementar un canal único a nuestra aplicación para lanzar una notificación. 
 
-Agregaremos también el servicio de Crashlytics, para informarnos sobre cualquier error en nuestra aplicación.
+#### Creación de canal
 
-#### Lineamientos
+Nuestro canal se creará en la raíz del proyecto, puede ser dentro de un Activity o Fragment maestro, o incluso en un Application. Afortunadamente, el método ___setNotificationChannel___ es seguro, ya que si el canal ya existe, el método no se reproduce.
 
-* Al menos deben ocurrir tres notificaciones en situaciones distintas y con ligeras distinciones de personalización.
-* Las notificaciones deben ser coherentes con la lógica de negocio.
-* Se debe implementar Crashlytics. Se deben considerar datos extras en el log de los reportes.
-* La implementación de firebase es obligatoria, aunque no existan servicios remotos que le den una utilidad específica a las push notifications.
+En la configuración de la aplicación, el canal se ve de la siguiente manera:
+
+<img src="images/channel_name.png" width="60%">
+
+<img src="images/channel_description.png" width="60%">
+
+### Envío de la notificación
+
+La notificación se debe reproducir cada vez que se efectúe una compra. Al dar click sobre la notificación, esta debe llevarnos a la pantalla de compra realizada.
+
+ Esta se debe ver de la siguiente forma:
+
+<img src="images/notification.png" width="60%">
+
+
+
+Para navegar a un Fragment en vez de de a un activity por medio de una notificación, podemos utilizar un ***Deep Link*** a través de nuestro navigation component y lanzarlo por medio de un ___pending intent___.
+
+```kotlin
+val pendingIntent = NavDeepLinkBuilder(requireContext())
+    .setComponentName(<ActivityContenedora>::class.java)
+    .setGraph(<id_del_nav_graph>)
+    .setDestination(<id_del_destino>)
+    .createPendingIntent()
+```
+
+
+
+El resultado final deberá ser el siguiente:
+
+
+
+<img src="images/notification.gif" width="40%">
+
+
 
 [`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
 
