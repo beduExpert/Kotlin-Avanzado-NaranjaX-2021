@@ -154,7 +154,7 @@ En este ejemplo, nuestra variable es asignada mediante @={} en vez del @{}, para
 
 * [Two-way Data Binding](https://medium.com/@ssiasoft/two-way-data-binding-and-managing-text-inputs-in-android-9cc4701f628e)
 
-[`Anterior`](../Reto-02) | [`Siguiente`](../Postwork)      
+[`Anterior`](../Reto-02) | [`Siguiente`](../Ejemplo-01)      
 
 </div>
 
