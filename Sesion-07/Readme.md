@@ -17,29 +17,7 @@
 
 
 
-### 2. Contenido :blue_book:
-
- 
-
-#### <ins>Model View Presenter</ins>
-
-Estructuraremos nuestro código con este patrón.
-
-- [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
-- [**`RETO 1`**](Reto-01/Readme.md)
-
----
-
- 
-
-#### <ins>RxKotlin</ins>
-
-Implementaremos el patrón observer a través de una librería de terceros llamada ReactiveX, en la versiǿn para kotlin. Esta difiere un poco a la implementación viste con LiveData.
-
-- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-
-
----
+### 2. Contenido :blue_book: 
 
 ####  <ins>Architecture Components</ins>
 
@@ -53,13 +31,28 @@ Aplica los lineamientos que vienen en esta guía para definir y comenzar el desa
 
 - [**`PROYECTO SESIÓN 7`**](Proyecto/Readme.md)
 
-### 4. Postwork :memo:
+- ---
 
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
+4. ### Temas adicionales 📖
 
-- [**`POSTWORK SESIÓN 7`**](Postwork/Readme.md)
+   #### <ins>Model View Presenter</ins>
 
-<br/>
+   Estructuraremos nuestro código con este patrón.
+
+   - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
+   - [**`RETO 1`**](Reto-01/Readme.md)
+
+   ---
+
+    
+
+   #### <ins>RxKotlin</ins>
+
+   Implementaremos el patrón observer a través de una librería de terceros llamada ReactiveX, en la versiǿn para kotlin. Esta difiere un poco a la implementación viste con LiveData.
+
+   - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
+
+   ####  
 
 [`Anterior`](../Sesion-03/Readme.md) | [`Siguiente`](../Sesion-05/Readme.md)      
 
