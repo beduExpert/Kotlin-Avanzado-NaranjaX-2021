@@ -54,19 +54,11 @@ Generaremos pruebas unitarias para una aplicación sencilla.
 
 
 
-### 3. Proyecto :hammer:
+### 3. Proyecto (Postwork) :hammer:
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
 - [**`PROYECTO SESIÓN 8`**](Proyecto/Readme.md)
-
-### 4. Postwork :memo:
-
-Esta es una guía anexa de consejos para una mejor planeación de tu proyecto para este módulo.
-
-- [**`POSTWORK SESIÓN 8`**](Postwork/Readme.md)
-
-<br/>
 
 [`Anterior`](../Sesion-03/Readme.md) | [`Siguiente`](../Sesion-05/Readme.md)      
 
