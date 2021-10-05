@@ -41,22 +41,23 @@ Crearemos un data class para poder manipular la informaciǿn en formato JSON rec
 
  
 
-<ins>Introducción a Retrofit</ins>
 
-Ahora utilizaremos el cliente Retrofit diseñado para aplicaciones android, resaltando la ventaja de su uso frente a sus alternativas.
-
-- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
-- [**`RETO 3`**](Reto-03/Readme.md)
-
- 
-
----
 
 ### 3. Proyecto (Postwork) :hammer:
 
 Aplica los lineamientos que vienen en esta guía para definir y comenzar el desarrollo de tu proyecto.
 
 - [**`PROYECTO SESIÓN 2`**](Proyecto/Readme.md)
+
+
+### 4. Material Adicional 
+
+<ins>Introducción a Retrofit</ins>
+
+Ahora utilizaremos el cliente Retrofit diseñado para aplicaciones android, resaltando la ventaja de su uso frente a sus alternativas.
+
+- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
+- [**`RETO 3`**](Reto-03/Readme.md)
 
 <br/>
 
