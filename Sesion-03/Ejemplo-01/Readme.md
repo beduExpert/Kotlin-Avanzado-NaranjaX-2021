@@ -202,7 +202,7 @@ La primera vez que abramos la app, o hasta no dar permisos, aparecerá este mens
 
 Resultado final:
 
-<img src="images/03.png" width="33%"/>
+
 
 <img src="images/geo.gif" width="33%"/>
 
