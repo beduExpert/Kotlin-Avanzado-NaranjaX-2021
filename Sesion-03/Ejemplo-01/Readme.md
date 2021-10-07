@@ -204,6 +204,8 @@ Resultado final:
 
 <img src="images/03.png" width="33%"/>
 
+<img src="images/geo.gif" width="33%"/>
+
 [`Anterior`](../Readme.md) | [`Siguiente`](../Reto-01)      
 
 </div>
