@@ -32,7 +32,7 @@ Gestionaremos los permisos de localización con una precisión definida y obtend
 Visualizaremos un Preview en pantalla que muestre lo que la cámara registre, capturaremos unas fotografías y  las almacenaremos en un sitio relativo a la aplicación.
 
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
+<!-- - [**`RETO 2`**](Reto-02/Readme.md) -->
 
 ---
 

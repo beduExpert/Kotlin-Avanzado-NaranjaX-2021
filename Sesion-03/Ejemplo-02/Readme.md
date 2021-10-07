@@ -279,7 +279,7 @@ Mostramos la ubicación de la foto con la app nativa ___File___  buscando en la 
 
 <img src="images/cam.gif" width="33%"/>
 
-[`Anterior`](../Reto-01) | [`Siguiente`](../Reto-02)      
+[`Anterior`](../Reto-01) | [`Siguiente`](../Readme.md)      
 
 </div>
 
