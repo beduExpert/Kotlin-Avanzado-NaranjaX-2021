@@ -125,6 +125,19 @@ companion object{
 
     //Obeto que obtiene la localización
     lateinit var mFusedLocationClient: FusedLocationProviderClient
+    private lateinit var btnLocate : Button
+    private lateinit var tvLatitude : TextView
+    private lateinit var tvLongitude :TextView
+```
+
+Las inicializamos dentro de `onCreate`
+
+```kotlin
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        btnLocate = findViewById(R.id.btnLocate)
+        tvLatitude = findViewById(R.id.tvLatitude)
+        tvLongitude = findViewById(R.id.tvLongitude)
 ```
 
 un método para consultar el status de algún permiso en la app, responde con bool

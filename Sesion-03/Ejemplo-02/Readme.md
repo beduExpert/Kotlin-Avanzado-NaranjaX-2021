@@ -79,9 +79,13 @@ class MainActivity : AppCompatActivity() {
 
     val PERMISSION_ID = 34
 
+    private lateinit var btnOpenCamera : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btnOpenCamera = findViewById(R.id.btnOpenCamera)
 
         btnOpenCamera.setOnClickListener {
             if(checkCameraPermission()){
@@ -166,10 +170,15 @@ class MainActivity : AppCompatActivity() {
 class CameraActivity : AppCompatActivity(){
 
     private val executor = Executors.newSingleThreadExecutor()
+    private lateinit var camera_preview: TextureView
+    private lateinit var capture_button: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
+
+        camera_preview = findViewById(R.id.camera_preview)
+        capture_button = findViewById(R.id.capture_button)
 
         startCamera()
     }
@@ -193,7 +202,7 @@ class CameraActivity : AppCompatActivity(){
             parent.removeView(camera_preview)
             parent.addView(camera_preview, 0)
 
-            camera_preview.surfaceTexture = it.surfaceTexture
+            camera_preview.setSurfaceTexture(it.surfaceTexture)
 
         }
 
