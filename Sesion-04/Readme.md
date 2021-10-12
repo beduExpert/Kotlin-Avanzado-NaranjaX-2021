@@ -13,9 +13,7 @@
 
 - Almacenar información de sesión como tipos de datos básicos.
 
-- Hacer operaciones simples a una DB con SQLite.
-
-- Gestionar una base de datos mediante una capa de abstracción.
+- Hacer operaciones simples a una DB.
 
   
 
