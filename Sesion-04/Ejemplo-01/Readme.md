@@ -170,6 +170,14 @@ Corremos el proyecto, debemos tener algo similar a esto:
 
 <img src="images/01.png" width="33%">
 
+1. Para recuperar los valores guardados, podemos usar el atributo `all` de `preferences`
+
+Construyamos botones para obtener todos los valores que hemos guardado usando la siguiente expresión para obtener cada uno
+
+```kotlin
+    preferences.all[NUMBER]
+```
+
 [`Anterior`](../Readme.md) | [`Siguiente`](../Reto-01)      
 
 </div>
