@@ -33,12 +33,11 @@ Meditante esta clase, guardaremos información no sensible en nuestra app.
 ---
 
 
-<ins>Room</ins>
+<ins>Realm</ins>
 
-Crearemos una base de datos SQLite con ayuda de Room Database.
+Crearemos una base de datos con ayuda de Realm Database.
 
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
 
 ---
 
@@ -52,7 +51,7 @@ Aplica los lineamientos que vienen en esta guía para definir y comenzar el desa
 
 ---
 
-### 4. Temas adicionales 📖
+<!-- ### 4. Temas adicionales 📖
 
 <ins>Aplicación de Realm</ins>
 
@@ -60,7 +59,7 @@ Utilizaremos la librería 3rd party ___Realm___ y gestionaremos mediante esta OR
 
 - [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
 
-- [**`RETO 3`**](Reto-03/Readme.md)
+- [**`RETO 3`**](Reto-03/Readme.md) -->
 
   
 
