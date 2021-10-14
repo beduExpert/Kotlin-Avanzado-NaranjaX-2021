@@ -33,12 +33,11 @@ Mediante esta clase, registraremos receptores capaces de escuchar emisiones de e
 
 
 
-<ins>Content Providers</ins>
+<ins>File Providers</ins>
 
-Un content provider proporciona una implementación de una interfaz que actúa como gestor del contenido de una aplicación, permitiendo que otro agente acceda y manipule nuestra información de forma eficiente y segura. En este ejemplo abordaremos los pasos esenciales para lograr su propósito.
+Un file provider proporciona una implementación de una interfaz que actúa como gestor del contenido de una aplicación, permitiendo que otro agente acceda y manipule el contenido de forma eficiente y segura. En este ejemplo abordaremos los pasos esenciales para lograr su propósito.
 
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
 
 
 
