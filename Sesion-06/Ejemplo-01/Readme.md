@@ -111,11 +111,12 @@ la pantalla debe quedar de esta forma:
 3. Desde android Oreo, tenemos qué registrar canales de push notifications, que agruparan estos en diferentes clasificaciones. los canales llevan un nombre, una descripción y un grado de importancia:
 
 ```kotlin
-private fun setNotificationChannel(){
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setNotificationChannel(){
         val name = getString(R.string.channel_courses)
         val descriptionText = getString(R.string.courses_description)
         val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+        val channel = NotificationChannel(CHANNEL_OTHERS, name, importance).apply {
             description = descriptionText
         }
 
@@ -129,7 +130,7 @@ private fun setNotificationChannel(){
 y lo implementamos en el método onCreate de la siguiente forma:
 
 ```kotlin
-//Para android Oreo en adelante, s obligatorio registrar el canal de notificación
+        //Para android Oreo en adelante, s obligatorio registrar el canal de notificación
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setNotificationChannel()
         }
@@ -140,7 +141,7 @@ y lo implementamos en el método onCreate de la siguiente forma:
 ```kotlin
  private fun simpleNotification(){
 
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        var builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
             .setSmallIcon(R.drawable.triforce) //seteamos el ícono de la push notification
             .setColor(getColor(R.color.triforce)) //definimos el color del ícono y el título de la notificación
             .setContentTitle(getString(R.string.simple_title)) //seteamos el título de la notificación
@@ -155,6 +156,33 @@ y lo implementamos en el método onCreate de la siguiente forma:
 ```
 
 y reproducimos esa función como listener del botón de notificaciones simples.
+
+```kotlin
+
+    val CHANNEL_OTHERS = "OTROS"
+
+
+    private lateinit var btnNotify:Button
+    private lateinit var btnActionNotify:Button
+    private lateinit var btnNotifyWithBtn:Button
+
+    ...
+
+
+        btnNotify = findViewById(R.id.btnNotify)
+        btnActionNotify = findViewById(R.id.btnActionNotify)
+        btnNotifyWithBtn = findViewById(R.id.btnNotifyWithBtn)
+```
+
+y lo asignamos al listener 
+
+```kotlin
+        btnNotify.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                simpleNotification()
+            }
+        }
+```
 
 5. Corremos la aplicación en el dispositivo con OS menor a android Oreo (API 26), abrimos la configuración de nuestra app y damos click a notficaciones. Veremos esta pantalla: 
 
@@ -220,13 +248,14 @@ No olvidar registrar la Activity en el *AndroidManifest.xml*.
 
 ```kotlin
     private fun touchNotification(){
+
         //Un PendingIntent para dirigirnos a una actividad pulsando la notificación
         val intent = Intent(this, NewBeduActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_MUTABLE)
 
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
             .setSmallIcon(R.drawable.bedu_icon)
             .setContentTitle(getString(R.string.action_title))
             .setContentText(getString(R.string.action_body))
@@ -237,9 +266,18 @@ No olvidar registrar la Activity en el *AndroidManifest.xml*.
         with(NotificationManagerCompat.from(this)) {
             notify(20, builder.build())
         }
+
+    }
 ```
 
 Seteamos este métoodo como listener de su respectivo botón y corremos la app. Debe mostrarse una notificación similar a esta: 
+
+```kotlin
+        btnActionNotify.setOnClickListener {
+            touchNotification()
+        }
+```
+
 
 <img src="images/06.png" width="33%"/>
 
@@ -249,7 +287,7 @@ dar Click sobre ella, debe ser redirigido a la pantalla que creamos anteriorment
 9. Creamos una nueva notificación que tenga un botón, que emitirá un Toast cuando se pulse. Para eso, asignamos un nombre a la acción que detonará el botón como un valor estático:
 
 ```kotlin
-companion object{
+    companion object{
         //el nombre de la acción a ejecutar por el botón en la notificación
         const val ACTION_RECEIVED = "action_received"
     }
@@ -270,10 +308,16 @@ class NotificationReceiver: BroadcastReceiver() {
 }
 ```
 
+Y agregamos el receiver al Manifest antes de la definición de las activities.
+```xml
+<receiver android:name=".NotificationReceiver"/>
+```
+
+
 Creamos el método que ejecutará nuestra notificación. Para ejecutar la acción, creamos otro *PendingIntent* que ejecutará el *NotificationManager* y lo asignamos a la función *addAction* que pide como parámetros un drawable, el texto de nuestro botón y el *PendingIntent*.
 
 ```kotlin
-private fun buttonNotification(){
+    private fun buttonNotification(){
 
         //Similar al anterior, definimos un intent comunicándose con NotificationReceiver
         val acceptIntent = Intent(this, NotificationReceiver::class.java).apply {
@@ -281,9 +325,9 @@ private fun buttonNotification(){
         }
         //creamos un PendingIntent que describe el pending anterior
         val acceptPendingIntent: PendingIntent =
-            PendingIntent.getBroadcast(this, 0, acceptIntent, 0)
+            PendingIntent.getBroadcast(this, 0, acceptIntent, PendingIntent.FLAG_MUTABLE)
 
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
             .setSmallIcon(R.drawable.bedu_icon)
             .setContentTitle(getString(R.string.button_title))
             .setContentText(getString(R.string.button_body))
@@ -300,6 +344,12 @@ private fun buttonNotification(){
 
 asignamos la función al listener del respectivo botón. Corremos la app y damos click al tercer botón, deberá salir una push notification como la siguiente:
 
+```kotlin
+        btnNotifyWithBtn.setOnClickListener {
+            buttonNotification()
+        }
+```
+
 <img src="images/07.png" width="33%"/>
 
 al darle click al botón, deberá reproducirse el Toast, tal como en la imagen:
@@ -308,9 +358,7 @@ al darle click al botón, deberá reproducirse el Toast, tal como en la imagen:
 
 
 
-
-
-[`Anterior`](../Readme.md) | [`Siguiente`](../Reto-01)      
+[`Anterior`](../Readme.md) | [`Siguiente`](../Ejemplo-02)      
 
 </div>
 

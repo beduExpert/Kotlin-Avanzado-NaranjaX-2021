@@ -17,7 +17,7 @@ Enriquecer nuestro conocimiento de notificaciones con nuevos conceptos
 
 ### 3. Desarrollo :computer:
 
-Estaremos utilizando el proyecto del [Reto 1](../Reto-01) como base 
+Estaremos utilizando el proyecto del Ejemplo 01 como base 
 
 1.- Agregaremos unos botones a nuestro menú, quedando el layout así: 
 
@@ -96,13 +96,6 @@ Estaremos utilizando el proyecto del [Reto 1](../Reto-01) como base
 
 <img src="images/01.png" width="33%"/>
 
-2. Agregamos la depencdenciar de ___FCM___ en ___app/build.gradle___.
-
-   
-
-   ```groovy
-   implementation 'com.google.firebase:firebase-messaging-ktx'
-   ```
 
 3. Crearemos grupos de notificaciones, para esto, comenzaremos asignando un string como id en nuestro ***MainActivity***.
 
@@ -309,7 +302,7 @@ y contraída:
 
  la asignamos al listener de su botón respectivo. Corremos la app, abrimos un par de notificaciones y presionamos el botón.
 
-[`Anterior`](../Reto-01) | [`Siguiente`](../Reto-02)      
+[`Anterior`](../Reto-01) | [`Siguiente`](../Ejemplo-03)      
 
 </div>
 

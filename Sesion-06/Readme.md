@@ -110,7 +110,7 @@ implementation 'com.google.firebase:firebase-analytics-ktx' // Opcional, pero la
 Crearemos notificaciones locales sencillas desde nuestra app.
 
 - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
-- [**`RETO 1`**](Reto-01/Readme.md)
+
 
 ---
 
@@ -121,7 +121,6 @@ Crearemos notificaciones locales sencillas desde nuestra app.
 Agregaremos elementos a las notificaciones que las personalizar y ajustan al contexto en que se utilizan. 
 
 - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-- [**`RETO 2`**](Reto-02/Readme.md)
 
 ---
 
