@@ -19,18 +19,21 @@
 
 ### 2. Contenido :blue_book: 
 
-####  <ins>Architecture Components</ins>
+####  <ins>Dependency Injection</ins>
 
 Utilizaremos el patrón de arquitectura propuesto por Jetpack para estructurar nuestro proyecto. 
 
 - [**`EJEMPLO 1`**](Ejemplo-01/)
+
+---
 
 #### <ins>Model View Presenter</ins>
 
    Estructuraremos nuestro código con este patrón.
 
    - [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
-   ---
+
+---
 
 #### <ins>RxKotlin</ins>
 

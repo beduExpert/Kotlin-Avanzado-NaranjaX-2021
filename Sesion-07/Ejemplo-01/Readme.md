@@ -45,9 +45,9 @@ class MovieTheatre {
     movie = Movie()  
   }  
 
-  fun playMovie() {  
-    System.out.println("Playing movie now")  
-  }  
+  fun playMovie(context : Context) {
+    Toast.makeText(context, "Ya comenzo la película ... 🤫", Toast.LENGTH_LONG).show()
+  } 
 }
 ```
 
@@ -70,9 +70,9 @@ Otra razón para evitar instanciar dependencias en el bloque `init` de un objeto
 ```kotlin
 class MovieTheatre(val screen: Screen, val projector: Projector, val movie: Movie) {  
 
-  fun playMovie() {  
-    System.out.println("Playing movie now")  
-  }  
+  fun playMovie(context : Context) {
+    Toast.makeText(context, "Ya comenzo la película ... 🤫", Toast.LENGTH_LONG).show()
+  } 
 }
 ```
 
@@ -80,6 +80,8 @@ class MovieTheatre(val screen: Screen, val projector: Projector, val movie: Movi
 
 ```kotlin
 class MainActivity : AppCompatActivity() {  
+
+  private lateinit var play : Button
 
   override fun onCreate(savedInstanceState: Bundle?) {  
     super.onCreate(savedInstanceState)  
@@ -93,8 +95,10 @@ class MainActivity : AppCompatActivity() {
     //Se crea el objeto inyectando las dependencias
     val movieTheatre = MovieTheatre(screen, projector, movie)
 
-    //llamamos al método de la clase para ver que funcione
-    movieTheatre.playMovie()  
+    //llamamos al método de la clase para ver que funcione, como listener del boton play
+    play.setOnClickListener {
+        movieTheatre.playMovie(this)
+    }  
   }  
 }
 
@@ -173,7 +177,9 @@ Es importante ver que el método `getMovieTheatre()` no se encuentra implementad
 ```kotlin
 val movieTheatre = DaggerMovieTheatreComponent.create().getMovieTheatre()
 
-movieTheatre.playMovie()
+play.setOnClickListener {
+    movieTheatre.playMovie(this)
+}
 
 ```
 
