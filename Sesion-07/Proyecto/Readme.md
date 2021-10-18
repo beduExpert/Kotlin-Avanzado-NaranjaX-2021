@@ -97,7 +97,7 @@ class Repository(private val apiHelper: ApiHelper) {
 La implementación en un repositorio es el siguiente
 
 ```kotlin
-class MainRepository(...daos,networking...) { 
+class MainRepository(...,networking...) { 
 suspend fun getUsers() = networking.loginService.getUsers()
 }
 ```
