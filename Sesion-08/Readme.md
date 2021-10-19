@@ -43,15 +43,13 @@ Google divide los tipos de tests en tres categorías diferentes:
 Generaremos pruebas unitarias para una aplicación sencilla.
 
 - [**`EJEMPLO 1`**](Ejemplo-01/Readme.md)
-- [**`Reto 1`**](Reto-01/Readme.md)
-- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
+- [**`RETO 1`**](Reto-01/Readme.md)
 
-#### <ins>Integrated tests y Tests instrumentados</ins>
+#### <ins>Integrated tests</ins>
 
 Generaremos pruebas unitarias para una aplicación sencilla.
 
-- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
-
+- [**`EJEMPLO 2`**](Ejemplo-02/Readme.md)
 
 
 ### 3. Proyecto (Postwork) :hammer:

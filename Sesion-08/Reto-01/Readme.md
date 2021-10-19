@@ -6,7 +6,7 @@
 
 ### 1. Objetivos :dart:
 
-* Realizar pruebas de clases y métodos ailsaldos  en específico.
+* Realizar pruebas unitarias
 
 ### 2. Requisitos :clipboard:
 
@@ -14,88 +14,41 @@
 
 ### 3. Desarrollo :computer:
 
-En el ejercicio anterior, pudimos generar el método ___getNumberOfVehicles___. Ahora, lo haremos para ___activeVehiclesPercentage___.
+Para este reto tendras que escribir pruebas unitarias que testeen la correctud de las siguientes funciones.
 
-a) Crear las pruebas unitarias para los siguientes casos:
-
-1. Dada una lista de vehículos vacía, obtener de ___activeVehiclesPercentage___ un 0%.
-2. Dada una lista de vehículos nula, obtener de ___activeVehiclesPercentage___ un 0%.
-3. Dada una lista de vehículos con dos vehículos (uno con el valor isActive= true y el otro false), obtener de ___activeVehiclesPercentage___ un 50%.
-
-
-
-<details>
-	<summary>Solucion</summary>
+1. Define pruebas unitarias para la función que fibonacci definida como sigue:
 
 ```kotlin
-@Test
-fun activeVehiclesPercentage_empty_returnsZero(){
-    val vehicles = listOf<Vehicle>()
 
-    val result = activeVehiclesPercentage(vehicles)
+    fun fib (n:Int): Long {
+        if (n == 0 || n == 1){
+            return n.toLong()
+        }
 
-    assertThat(result).isEqualTo(0)
-}
+        var a = 0L
+        var b = 1L
+        var c = 1L
 
-@Test
-fun activeVehiclesPercentage_null_returnsZero(){
-    val vehicles = null
-
-    val result = activeVehiclesPercentage(vehicles)
-
-    assertThat(result).isEqualTo(0)
-}
-
-@Test
-fun activeVehiclesPercentage_two_returnsFifty(){
-    val vehicles = listOf(
-            Vehicle(
-                    0,
-                    "pointer",
-                    "Volkswagen",
-                    "SMT01",
-                    true
-            ),
-            Vehicle(
-                    1,
-                    "Vento",
-                    "Volkswagen",
-                    "GTA05",
-                    false
-            )
-    )
-
-    val result = activeVehiclesPercentage(vehicles)
-
-    assertThat(result).isEqualTo(50f)
-}
+        (1..n-2).forEach{ i ->
+            c = a + b
+            a = b
+            b = c
+        }
+        return c
+    }
 ```
 
-
-  </details>
-
-
-
-b) Corregir el error encontrado en el Test Unitario.
-
-<details>
-	<summary>Solucion</summary>
+2. Define pruebas unitarias para la función que verifica que los paréntesis de una expresión estén balanceados, es decir que haya la misma cantidad de paréntesis que abren y paréntesis que cierran.
 
 ```kotlin
-internal fun activeVehiclesPercentage(vehicles: List<Vehicle>?): Float{
-
-    if(vehicles == null || vehicles.isEmpty()){
-        return 0f
+    fun checkBraces(s:String) : Boolean {
+        return s.count{ it == '(' } == s.count { it == ')'}
     }
 
-    val activeVehicles = vehicles.count{it.isWorking}
-    val totalVehicles = vehicles?.size
-    return ( (totalVehicles- activeVehicles)/totalVehicles.toFloat() ) * 100f
-}
 ```
 
+Para ambos casos define cuál es el correcto funcionamiento de las funciones y haz 3 pruebas que definan casos correctos y 3 que definan casos incorrectos. Con el resultado de tus pruebas unitarias di si las funcioens son correctas o no, en caso de no serlo ¿Que cambios son necesarios para que las funciones sean correctas?
 
-</details>
 
 
 

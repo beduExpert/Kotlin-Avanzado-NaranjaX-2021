@@ -1,13 +1,13 @@
-package org.bedu.recyclercontacts
+package org.bedu.addContact
 
 import android.os.Parcel
 import android.os.Parcelable
 
 data class Contact (
-    var name: String,
-    var status: String,
-    var phone: String,
-    var idImage: Int
+    var name: String = "",
+    var status: String = "",
+    var phone: String = "",
+    var idImage: Int = 0
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import android.app.Activity
-import android.util.Log
 import android.widget.Toast
+import org.bedu.addContact.AddContactActivity
+import org.bedu.addContact.Contact
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setUpRecyclerView()
 
         fab.setOnClickListener { view ->
-            val intent = Intent(this,AddContactActivity::class.java)
+            val intent = Intent(this, AddContactActivity::class.java)
             startActivityForResult(intent,1)
 
         }

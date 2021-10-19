@@ -17,249 +17,189 @@
 
 ### 3. Desarrollo :computer:
 
-Vamos a realizar ahora test unitarios. Para esto, utilizaremos el [proyecto base](base). A continuación repasamos lo agregado:
-
-
-
-* Creamos una nuevo archivo ___VehicleUtils.kt___ dentro de un nuevo package (utils). Aquí estarán contenidos los dos métodos que calcularán nuestros datos extra.
+1. Creamos un nuevo proyecto con empty Activity y agregamos las dependencias de pruebas unitarias
 
 ```kotlin
-internal fun getNumberOfVehicles(vehicles: List<Vehicle>?): Int{
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    return vehicles?.size ?: 0
-
-}
-
-internal fun activeVehiclesPercentage(vehicles: List<Vehicle>?): Float{
-
-
-    val activeVehicles = vehicles!!.count{it.isWorking}
-    val totalVehicles = vehicles?.size
-    return ( (totalVehicles- activeVehicles)/totalVehicles.toFloat() ) * 100f
-}
+    testImplementation "com.google.truth:truth:1.0.1"
+    androidTestImplementation "com.google.truth:truth:1.0.1"
 ```
 
+es muy importante notar que las bibliotecas que estamos agregando vienen de dos fuentes distintas.
 
+2. Vamos a definir pruebas unitarias sobre una función de registro de usuarios. Para esto vamos a seguir una metodología en la que primero se definen las pruebas unitarias y posteriormente se da la especificación de la función. 
 
-* Agregaremos un nuevo layout donde tendremos el número de vehículos, y el porcentage de vehículos activos:
-
-<img src="images/new-layer.png" width="33%">
-
-
-
-La porción del layout agregado para esto es el siguiente (incluye data binding en los dos valores):
-
-```xml
-... 
-<androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <TextView
-            android:id="@+id/vehicle_number_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Numero de vehículos: "
-            android:layout_marginTop="12dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/vehicle_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(vehicleListViewModel.vehicleNumber)}"
-            app:layout_constraintStart_toEndOf="@id/vehicle_number_title"
-            app:layout_constraintTop_toTopOf="@id/vehicle_number_title"/>
-        <TextView
-            android:id="@+id/active_vehicles_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vehículos activos: "
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vehicle_number_title"/>
-        <TextView
-            android:id="@+id/active_vehicles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(vehicleListViewModel.activeVehicles) + `%`}"
-            app:layout_constraintStart_toEndOf="@id/active_vehicles_title"
-            app:layout_constraintTop_toBottomOf="@id/vehicle_number"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-             ...
-            app:layout_constraintTop_toBottomOf="@id/active_vehicles_title"
-				/>
-```
-
-
-
-
-
-* En el ViewModel, agregamos dos variables:
+3. Creamos un nuevo archivo de Kotlin de tipo **Object** con el nombre *RegistrationUtil* a la misma altura que se encuentra el Main activity. Dentro de este nuevo archivo agregamos la firma de la función sobre la cual vamos a definir las pruebas unitarias.
 
 ```kotlin
-var vehicleNumber = MutableLiveData(0)
-var activeVehicles = MutableLiveData(0f)
-```
-
-Y un método para actualizar los datos:
-
-```kotlin
-fun updateVehicleStats(vehicles:List<Vehicle>?){
-        vehicleNumber.value = getNumberOfVehicles(vehicles)
-        activeVehicles.value = activeVehiclesPercentage(vehicles)
+fun validateRegistrationInput(
+        username: String,
+        password: String,
+        confirmedPassword: String
+    ): Boolean {
+        return true
     }
+
 ```
 
+Esta función por ahora simplemente regresa True sin importar cuales sean sus argumentos.
 
-
-* En ___VehicleListFragment___, en el método _setupVehicleList_ actualizamos las variables agregadas al _viewModel_:
-
-  
-
-  ```kotlin
-  viewModel.vehicleList.observe(viewLifecycleOwner, Observer {
-                  it?.let {
-  										...
-                      viewModel.updateVehicleStats(it)
-                  }
-              })
-  ```
-
-  
-
-#### Creando un nuevo Test
-
- Empezaremos agregando la siguiente dependencia (solo para testing):
+4. Vamos a agregar una especificación informal del funcionamiento correcto de nuestra aplicación en forma de comentario. Esto no representa ningún avance en la verificación del código simplemente es una guía para nosotros, que nos ayudará a saber cuales son los aspectos a testear sobre esta función.
 
 ```kotlin
-dependencies {
-   // test
-    testImplementation "com.google.truth:truth:1.1"
-}
+    /**
+     * La entrada no es válida si ...
+     * ... username/password es vacío
+     * ...ya se había registrado el username
+     * ...Las contraseña no coinciden
+     * ...La contraseña tiene una longitud menor a 8 caracteres
+     */
+
 ```
 
-Esta es una librería de assertion (existen otras como hamcrest).
+Para verificar el segundo punto definimos una lista de usernames ya utilizados.
 
-Después, dentro de ___VehicleUtils.kt___, damos click derecho a cualquier función de las dos  luego _Generate>Test_.
-
-Se abrirá una nueva ventana, seleccionamos la versión de JUnit a utilizar, seleccionamos la carpeta donde se guardará el Test (verificar que sea app/src/test... y no app/src/androidTest) y damos aceptar.
-
-<img src="images/new-test.gif" width="95%">
-
-
-
-Se creará la siguiente clase vacía:
-
-```kotlin
-class VehicleUtilsKtTest{
-
-}
+```language
+private val existingUsers = listOf("Peter", "Carl")
 ```
+5. Ahora generaremos un archivo de testing para esta clase. Para eso damos click derecho sobre el nombre del Objeto y seleccionamos la opción de Generate > Test...
 
+Vamos a usar los siguientes valores para el archivo de testing:
 
+- Testing Library : JUnit4
+- Class name: RegistrationUtilTest
 
-Aquí escribiremos nuestras pruebas unitarias
+el resto de los valores los dejamos en blanco. Damos click en Ok. 
 
+6. Nos pide que seleccionemos el directorio en el cual se quiere agregar la nueva clase de pruebas unitarias. Para este caso seleccionaremos simplemente test. Ya que no se relaciona con los componentes de android. Al dar click en Ok se genero el nuevo archivo con la clase RegistrationUtilTest, dentro de esta clase ya podemos definir las pruebas unitarias.
 
-
-#### Ejecutando una prueba unitaria
-
-Antes de crear nuestra primera prueba, encontraremos ya creada una clase llamada ___ExampleUnitTest___ con un solo método:
+7. Definamos la prueba unitaria para el caso en el que el usuario o contraseña son vacíos. Como sigue:
 
 ```kotlin
-class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
-}
-```
-
-Analizamos la estructura:
-
-* ___ExampleUnitTest___: es una clase simple que contiene todos los tests a ejecutar.
-* Addition_isCorrect: es un método que verifica un caso específico.
-* @Test: Es una anotación que debe ir siempre como cabecera de cualquier función de testing
-* assertEquals(): Método que verifica que dos expresiones sean correctas.
-
-Corremos el ejemplo y pasaremos el test. Modificamos el número 4. Comentar lo que sucede.
-
-
-
-#### Creando pruebas unitarias
-
-Con la estructura analizada, verificaremos que nuestro método ___getNumberOfVehicles___ funcione correctamente. para esto, haremos tres pruebas:
-
-1. Enviaremos una lista de vehículos vacía. El resultado debe ser cero.
-2. Pasamos un valor nulo, el resultado debe ser cero.
-3. Pasamos dos vehículos, el resultado debe ser dos.
-
-
-
-Para el primer caso, creamos la lista de vehículos vacío; luego, obtenemos el resultado y finalmente verificamos que este equivalga a cero.
-
-
-
-```kotlin
-@Test
-fun getNumberOfVehicles_empty_returnsZero(){
-    val vehicles = listOf<Vehicle>()
-
-    val result = getNumberOfVehicles(vehicles)
-
-    assertThat(result).isEqualTo(0)
-}
-```
-
-
-
-Para el segundo caso, creamos la lista nula; luego, obtenemos el resultado y finalmente verificamos que este equivalga a cero.
-
-
-
-```kotlin
-@Test
-fun getNumberOfVehicles_null_returnsZero(){
-    val vehicles = null
-
-    val result = getNumberOfVehicles(vehicles)
-
-    assertThat(result).isEqualTo(0)
-}
-```
-
-
-
-Para el tercer caso, creamos la lista con dos vehículos; luego, obtenemos el resultado y finalmente verificamos que este equivalga a dos.
-
-```kotlin
-@Test
-fun getNumberOfVehicles_two_returnsTwo(){
-    val vehicles = listOf(
-        Vehicle(
-            0,
-            "pointer",
-            "Volkswagen",
-            "SMT01",
-            true
-        ),
-        Vehicle(
-            1,
-            "Vento",
-            "Volkswagen",
-            "GTA05",
-            true
+    fun `empty username returns false`() {
+        val result = RegistrationUtil.validateRegistrationInput(
+            "",
+            "123",
+            "123"
         )
-    )
-
-    val result = getNumberOfVehicles(vehicles)
-
-    assertThat(result).isEqualTo(2)
-}
+        assertThat(result).isFalse()
+    }
 ```
+
+La anatomía de una pruieba unitaria es la siguiente:
+
+- La anotación `@Test`.
+- Se define como una función sin parámetros ni tipo de regreso.
+- En el cuerpo de la función se hace la llamada a la funcionalidad que estamos testeando, con ciertos parámetros.
+- Se hace una declaración 
+
+Trhuth se va a encargar de verificar esta declaración sea cierta, en este caso la prueba paso, en el caso contrario la prueba falla.
+
+La declaración va a depender del tipo de dato que arroje como resultado la funcionalidad testeada. Por ejemplo
+
+```kotlin
+assertThat("hola")
+```
+tiene opciones distintas.
+
+Para que assert funcione correctamente tenemos que importarla desde Truth no de google como lo hace automáticamente AndroidStudio al crear la clase, por lo que borramos el import y la importamos directo de Truth.
+
+Al ejecutar esta prueba unitaria, vemos que no pasa pues estamos esperando un valor de regreso False y nuestra función siempre regresa True. 
+
+8. Definimos ahora una función que si pase la prueba.
+
+```kotlin
+    @Test
+    fun `valid username and correctly repeated password returns true`() {
+        val result = RegistrationUtil.validateRegistrationInput(
+            "Philipp",
+            "123",
+            "123"
+        )
+        assertThat(result).isTrue()
+    }
+```
+
+En este caso todos los campos estan presentes por lo que la prueba unitaria debería pasar.
+
+9. Damos una prueba unitaria para el caso en el que el username ya este registrado que falle.
+
+```kotlin
+    @Test
+    fun `username already exists returns false`() {
+        val result = RegistrationUtil.validateRegistrationInput(
+            "Carl",
+            "123",
+            "123"
+        )
+        assertThat(result).isFalse()
+    }
+```
+
+10. **Ejercicio** definamos ahora uno que pase el criterio anterior.
+
+11. Escribimos la prueba que falla cuando las contraseñas no coinciden.
+
+```kotlin
+    @Test
+    fun `incorrectly confirmed password returns false`() {
+        val result = RegistrationUtil.validateRegistrationInput(
+            "Philipp",
+            "123456",
+            "abcdefg"
+        )
+        assertThat(result).isFalse()
+    }
+```
+
+11. **Ejercicio** definamos ahora una prueba que pase el criterio de coincidencia de contraseñas.
+
+12.  La siguiente prueba pasa en el último criterio respecto a la longitud de la contraseña.
+
+```kotlin
+    @Test
+    fun `less than 2 digit password returns false`() {
+        val result = RegistrationUtil.validateRegistrationInput(
+            "Philipp",
+            "abcdefg5",
+            "abcdefg5"
+        )
+        assertThat(result).isFalse()
+
+        assertT
+    }
+```
+13. **Ejercicio** definamos ahora una prueba que no pase el criterio de longitud.
+
+
+14. Recordemos que estamos trabajando con un desarrollo a la inversa en donde a partir de las pruebas unitarias se da la implementación para la función que estamos testeando. Entonces regresamos a `RegistrationUtil` e implementamos la función.
+
+```kotlin
+    fun validateRegistrationInput(
+        username: String,
+        password: String,
+        confirmedPassword: String
+    ): Boolean {
+        if(username.isEmpty() || password.isEmpty()) {
+            return false
+        }
+        if(username in existingUsers) {
+            return false
+        }
+        if(password != confirmedPassword) {
+            return false
+        }
+        if(password.count { it.isDigit() } < 2) {
+            return false
+        }
+        return true
+    }
+```
+
 
 [`Anterior`](../) | [`Siguiente`](../Reto-01)      
 
